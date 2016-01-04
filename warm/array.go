@@ -16,6 +16,24 @@ func testArray() {
 	fmt.Println("len is ", len(a))
 }
 
-func main() {
-	testArray()
+//多维数组
+func testMultidimensionalArray() {
+	var buffer [20]byte
+	var grid1 [3][3]int
+	grid1[1][0], grid1[1][1], grid1[1][2] = 8, 6, 2
+	grid2 := [3][3]int{{4, 3}, {5, 8, 10}}
+	cities := [...]string{"shanghai", "Mumbai", "New York", "California"}
+	cities[len(cities)-1] = "Las Vegas"
+	fmt.Println("Type Len Contents ")
+	fmt.Printf("%-8T %2d %v\n", buffer, len(buffer), buffer)
+	fmt.Printf("%-8T %2d %q\n", cities, len(cities), cities)
+	fmt.Printf("%-8T %2d %v\n", grid1, len(grid1), grid1)
+	fmt.Printf("%-8T %2d %v\n", grid2, len(grid2), grid2)
 }
+
+/*
+func main() {
+	//testArray()
+	testMultidimensionalArray()
+}
+*/
