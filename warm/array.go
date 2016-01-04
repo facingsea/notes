@@ -13,10 +13,9 @@ func testArray() {
 	fmt.Println(a)
 	//a[3] = "!" //数组的长度不能改变，此处错误
 	//fmt.Println(a)
+	fmt.Println("len is ", len(a))
 }
 
-/*
 func main() {
 	testArray()
 }
-*/
