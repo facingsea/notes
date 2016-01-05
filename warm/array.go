@@ -35,6 +35,13 @@ func testMultidimensionalArray() {
 func testKeyValueArray(){
 	a := [5]int{2:12, 3:45, 4:23}
 	fmt.Println(a) //out is : [0 0 12 45 23]
+	fmt.Println("len is : ", len(a))
+	fmt.Println("cap is : ", cap(a))
+	
+	b := [...]int{2:13, 4:56} //索引最大为4，所以该数组的长度为5（0~4）
+	fmt.Println(b)
+	fmt.Println("len is : ", len(b))
+	fmt.Println("cap is : ", cap(b))
 }
 
 /*
