@@ -13,6 +13,7 @@ func adder() func(int) int{
 	// 返回一个闭包，此闭包引用了外部变量 sum
 	return func(x int) int{
 		sum += x
+		fmt.Println(sum)
 		return sum
 	}
 }
