@@ -1,0 +1,47 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+type AA struct {
+	X,Y float64
+}
+
+// 结构体 AA 的方法
+// 这里的方法接收者（method receiver）v 的类型为 *AA
+func (v *AA) Abs() float64 {
+	return math.Abs(v.X * v.X + v.Y * v.Y)
+}
+
+type Person struct {
+	name string
+	age int
+}
+
+func (p *Person) sayHello1(){
+	p.name = "lisi"
+	fmt.Println("new name is : ", p.name)
+}
+
+func (p Person) sayHello2(){
+	p.name = "wangwu"
+}
+
+/*
+func main(){
+	//v := &AA{3, 4}
+	//fmt.Println(v.Abs())
+	
+	p1 := &Person{"zhangsan1", 20}
+	fmt.Println(p1.name)
+	p1.sayHello1()
+	fmt.Println(p1.name)
+	
+	p2 := Person{"zhangsan2", 34}
+	fmt.Println(p2.name)
+	p2.sayHello2()
+	fmt.Println(p2.name)
+}
+*/
