@@ -1,8 +1,10 @@
-package main	
+package main
 
-import(
+import (
 	"fmt"
 )
+
+//refer to sign.go
 
 type HH struct {
 	X int
