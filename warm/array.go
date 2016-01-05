@@ -31,9 +31,16 @@ func testMultidimensionalArray() {
 	fmt.Printf("%-8T %2d %v\n", grid2, len(grid2), grid2)
 }
 
+//key:value的形式初始化数组，key表示数组的index索引位置，value表示该位置对应的值
+func testKeyValueArray(){
+	a := [5]int{2:12, 3:45, 4:23}
+	fmt.Println(a) //out is : [0 0 12 45 23]
+}
+
 /*
 func main() {
 	//testArray()
-	testMultidimensionalArray()
+	//testMultidimensionalArray()
+	testKeyValueArray()
 }
 */
