@@ -38,6 +38,7 @@ func (f MyFloat) Abs() float64 {
 	return float64(f)
 }
 
+/*
 func main() {
 	//v := &AA{3, 4}
 	//fmt.Println(v.Abs())
@@ -60,3 +61,4 @@ func main() {
 	fmt.Println(-math.Sqrt2)
 	fmt.Println(f.Abs())
 }
+*/
