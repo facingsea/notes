@@ -20,16 +20,15 @@ type Person struct {
 	age int
 }
 
-func (p *Person) sayHello1(){
+func (p *Person) sayHello1(){ //p为指针类型，如果修改的话，会影响到原值
 	p.name = "lisi"
-	fmt.Println("new name is : ", p.name)
 }
 
-func (p Person) sayHello2(){
+func (p Person) sayHello2(){ //p为Person类型的一个拷贝，修改p的值不会影响到原值
 	p.name = "wangwu"
 }
 
-/*
+
 func main(){
 	//v := &AA{3, 4}
 	//fmt.Println(v.Abs())
@@ -38,10 +37,13 @@ func main(){
 	fmt.Println(p1.name)
 	p1.sayHello1()
 	fmt.Println(p1.name)
+	p1.sayHello2()
+	fmt.Println(p1.name)
 	
 	p2 := Person{"zhangsan2", 34}
 	fmt.Println(p2.name)
 	p2.sayHello2()
 	fmt.Println(p2.name)
+	p2.sayHello1()
+	fmt.Println(p2.name)
 }
-*/
