@@ -33,6 +33,7 @@ type MyFloat float64
 
 func (f MyFloat) Abs() float64 {
 	if f < 0 {
+		fmt.Println("work")
 		return float64(-f)
 	}
 	return float64(f)
