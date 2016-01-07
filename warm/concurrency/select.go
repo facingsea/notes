@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
+	//"time"
 )
 
 // select语法如下：
@@ -56,10 +56,15 @@ func createChannels() {
 
 func expensiveComputation(area int, answer chan int, done chan bool) {
 	finished := false
+	var i = 0
 	for !finished {
 		result := rand.Intn(area)
-		time.Sleep(10 * time.Second)
+		//time.Sleep(10 * time.Second)
 		answer <- result
+		i++
+		if i > 5 {
+			break
+		}
 	}
 	done <- true
 }
@@ -80,8 +85,7 @@ func calc() {
 	}()
 	go expensiveComputation(10, answera, done)
 	go expensiveComputation(5, answerb, done)
-	var step = 0 //避免无限循环
-	for doneCount != allDone && step < 6 {
+	for doneCount != allDone {
 		var which, result int
 		//在一个select语句中，GO语言会按照顺序从头至尾评估每一个发送和接收语句，
 		//如果其中的任意一语句可以继续执行（即没有阻塞），那么就从那些可以执行的语句中 任意 选择
@@ -101,7 +105,6 @@ func calc() {
 			fmt.Printf("%c --> %d ", which, result)
 			fmt.Println()
 		}
-		step++
 	}
 	fmt.Println()
 }
