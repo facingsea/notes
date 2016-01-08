@@ -35,9 +35,30 @@ func testBufferChannel() {
 	//c <- -3 //通道关闭之后不能再发送数据，否则会报panic: send on closed channel
 }
 
+//使用for range来接收channel中的值
+func fibonacci(n int, c chan int) {
+	x, y := 0, 1
+	for i := 0; i < n; i++ {
+		c <- x
+		x, y = y, x+y
+	}
+	close(c)
+}
+
+func testFibonacci() {
+	c := make(chan int, 10)
+	go fibonacci(cap(c), c)
+	// 这里 for 和 range 组合使用
+	// 不断的接收 c 中的值一直到它被关闭
+	for i := range c {
+		fmt.Println(i)
+	}
+}
+
 /*
 func main() {
 	//calcSum()
-	testBufferChannel()
+	//testBufferChannel()
+	testFibonacci()
 }
 */
