@@ -32,7 +32,11 @@ func testFibonacci2() {
 
 //select 中的 default 会在没有任何 case 可执行时执行（类似于 switch）
 func testSelectDefault() {
+	// 创建一个 tick channel
+	// 在 100 毫秒后会向 tick channel 中发送当前时间
 	tick := time.Tick(100 * time.Millisecond)
+	// 创建一个 boom channel
+	// 在 500 毫秒后会向 boom channel 中发送当前时间
 	boom := time.After(500 * time.Millisecond)
 	for {
 		select {
