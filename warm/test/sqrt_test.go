@@ -26,7 +26,7 @@ func ExampleCalcInt() {
 	//fmt.Println("Example func run")
 	sum := CalcInt(2, 3)
 	fmt.Println(sum)
-	// Output: 6
+	// Output: 6  // 会将6与上面fmt输出的结果做对比，如果符合则通过，否则失败
 }
 
 //以上方法输入结果为：
