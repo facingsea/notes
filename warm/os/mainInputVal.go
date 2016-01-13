@@ -6,12 +6,13 @@ import (
 	"strings"
 )
 
+//测试main方法获取输入参数
+
 //init方法先于main方法执行
 func init() {
 	fmt.Println("init method run.")
 }
 
-//测试main方法获取输入参数
 //用命令行的方式执行：go run mainInputVal.go "zhangsan"
 func testMain() {
 	who := "World!"
