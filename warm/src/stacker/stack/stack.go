@@ -23,7 +23,7 @@ func (stack Stack) Top() (interface{}, error) {
 	if len(stack) == 0 {
 		return nil, errors.New("cann't Top() an empty stack.")
 	}
-	return stack[:len(stack)-1], nil
+	return stack[len(stack)-1], nil
 }
 
 func (stack Stack) Cap() int {
