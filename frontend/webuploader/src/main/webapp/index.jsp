@@ -43,14 +43,31 @@
 
 	    uploader = WebUploader.create({
 	    	// swf文件路径
-		    swf: 'http://cdn.staticfile.org/webuploader/0.1.5/Uploader.swf',
+		    swf: 'http://cdn.staticfile.org/webuploader/0.1.5/Uploader.swf'
 		    // 文件接收服务端。
-		    server: 'http://localhost:8080/webuploader/FileAction',
+		    , server: 'http://localhost:8080/webuploader/FileAction'
 		    // 选择文件的按钮。可选。
 		    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-		    pick: '#picker',
+		    //pick: '#picker',
+		    , pick: {
+		    	id: "#picker",  // 指定选择文件的按钮容器，不指定则不创建按钮
+		    	multiple: false // 是否开起同时选择多个文件能力
+		    }
+		    , accept: {  //  {Arroy} [可选] [默认值：null] 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
+		    	title: "Images" // 文字描述
+		    	,extensions: "gif,jpg,jpeg,bmp,png" // 允许的文件后缀，不带点，多个用逗号分割。
+		    	//,mimeTypes: "images/*" // 多个用逗号分割
+		    }
+		    , thumb: {
+		    	width: 110
+    			, height: 110
+    			, quality: 70
+    			, allowMagnify: true
+    			, crop: true
+    			//, type: "image/jpeg"
+		    }
 		    // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
-		    resize: false
+		    , resize: false
 	    });
 
 	    // 当有文件添加进来的时候
