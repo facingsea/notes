@@ -24,6 +24,8 @@
 			<button id="ctlBtn" class="btn btn-default">开始上传</button>
 		</div>
 	</div>
+	
+	<button id="changeBtn" class="btn btn-default">更改文件类型</button>
 
 	<!--dom结构部分-->
 	<div id="uploader-demo">
@@ -38,6 +40,7 @@
 	    var $ = jQuery,
 	        $list = $('#thelist'),
 	        $btn = $('#ctlBtn'),
+	        $changeBtn = $('#changeBtn'),
 	        state = 'pending',
 	        uploader;
 
@@ -241,6 +244,15 @@
 	        } else {
 	            uploader.upload();
 	        }
+	    });
+	    
+	    $changeBtn.on('click', function(){
+	    	uploader.option('accept', {  //  {Arroy} [可选] [默认值：null] 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
+		    	title: "Images" // 文字描述
+		    	,extensions: "gif,jpg,jpeg,bmp,png" // 允许的文件后缀，不带点，多个用逗号分割。
+		    	//,mimeTypes: "images/*" // 多个用逗号分割
+		    }
+		    );
 	    });
 	});
 
