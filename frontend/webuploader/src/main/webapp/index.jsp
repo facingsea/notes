@@ -247,13 +247,17 @@
 	    });
 	    
 	    $changeBtn.on('click', function(){
+			alert("change the accept types");
+			console.log(uploader);
+			//重新设置accept不好使
 	    	uploader.option('accept', {  //  {Arroy} [可选] [默认值：null] 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
-		    	title: "Images" // 文字描述
-		    	,extensions: "gif,jpg,jpeg,bmp,png" // 允许的文件后缀，不带点，多个用逗号分割。
+		    	title: "Csv" // 文字描述
+		    	,extensions: "csv" // 允许的文件后缀，不带点，多个用逗号分割。
 		    	//,mimeTypes: "images/*" // 多个用逗号分割
 		    }
 		    );
-	    });
+			console.log(uploader);
+	    })
 	});
 
 
