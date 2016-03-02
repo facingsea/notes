@@ -44,6 +44,9 @@ public class FileAction extends HttpServlet {
 				ServletFileUpload upload = new ServletFileUpload(factory);
 				List<FileItem> items = upload.parseRequest(request);
 				Iterator<FileItem> it = items.iterator();
+				int i = 1;
+				int j = 0;
+				int m = i / j;
 				while(it.hasNext()){
 					FileItem item = it.next();
 					if(item.isFormField()){
@@ -66,6 +69,11 @@ public class FileAction extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				//response.sendError(100001);
+				//response.sendError(1000, "hello world");
+				//throw new RuntimeException("heheh");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write("{\"error\": true, \"msg\": \"文件已存在\"}");
 			}
 			
 		}
