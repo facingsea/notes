@@ -12,7 +12,20 @@
 <link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/webuploader/0.1.5/webuploader.css">
 <!--引入JS-->
 <script type="text/javascript" src="http://cdn.staticfile.org/webuploader/0.1.5/webuploader.js"></script>
+<style type="text/css">
 
+.tit_op {
+    width: 98px;
+    height: 32px;
+    float: left;
+    margin: 3px 5px;
+    cursor: pointer;
+    text-indent: 32px;
+    color: #FFF;
+    line-height: 32px;
+    border-radius: 2px;
+}
+</style>
 </head>
 <body>
 
@@ -54,6 +67,7 @@
 		    //pick: '#picker',
 		    , pick: {
 		    	id: "#picker",  // 指定选择文件的按钮容器，不指定则不创建按钮
+		    	style: "",
 		    	multiple: true // 是否开起同时选择多个文件能力
 		    }
 		    , accept: {  //  {Arroy} [可选] [默认值：null] 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
@@ -96,7 +110,7 @@
 	    		success: function(data){
 	    			console.log(data);
 	    			var ret = JSON.parse(data);
-	    			alert("ret" + ret.success);
+	    			//alert("ret" + ret.success);
 	    			if(!ret.success){
 		    			exist = true;
 	    			}
