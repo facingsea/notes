@@ -6,12 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>webuploader上传插件测试</title>
 
-<script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery-1.12.1.js"></script>
 
 <!--引入CSS-->
-<link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/webuploader/0.1.5/webuploader.css">
+<link rel="stylesheet" type="text/css" href="./js/webuploader/dist/webuploader.css">
 <!--引入JS-->
-<script type="text/javascript" src="http://cdn.staticfile.org/webuploader/0.1.5/webuploader.js"></script>
+<script type="text/javascript" src="./js/webuploader/dist/webuploader.js"></script>
 <style type="text/css">
 
 .tit_op {
@@ -33,7 +33,8 @@
 		<!--用来存放文件信息-->
 		<div id="thelist" class="uploader-list"></div>
 		<div class="btns">
-			<div id="picker">选择文件</div>
+			<div id="picker" style="background-image: url(./img/ft_01.png); background-repeat: no-repeat;">选择文件</div>
+			<div id="mediaFileBtn">多媒体文件</div>
 			<button id="ctlBtn" class="btn btn-default">开始上传</button>
 		</div>
 	</div>
@@ -67,7 +68,7 @@
 		    //pick: '#picker',
 		    , pick: {
 		    	id: "#picker",  // 指定选择文件的按钮容器，不指定则不创建按钮
-		    	style: "",
+		    	//style: "",
 		    	multiple: true // 是否开起同时选择多个文件能力
 		    }
 		    , accept: {  //  {Arroy} [可选] [默认值：null] 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
@@ -97,6 +98,10 @@
 		    , resize: false
 	    });
 	
+	    uploader.addButton({
+	    	//id: "#mediaFileBtn"
+	    	//, style: ''
+	    });
 	    
 	    //当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列。
 	    uploader.on('beforeFileQueued', function(file){
