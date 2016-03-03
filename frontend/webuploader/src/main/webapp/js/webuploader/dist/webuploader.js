@@ -945,6 +945,8 @@
         $.extend( Runtime.prototype, {
     
             getContainer: function() {
+            	console.log(12);
+            	console.log("初步设置子容器的css属性");
                 var opts = this.options,
                     parent, container;
     
@@ -1697,6 +1699,8 @@
         var $ = Base.$;
     
         function FilePicker( opts ) {
+        	console.log("10");
+        	console.log("创建opt.container");
             opts = this.options = $.extend({}, FilePicker.options, opts );
     
             opts.container = $( opts.id );
@@ -1776,6 +1780,8 @@
             },
     
             refresh: function() {
+            	console.log("--");
+            	console.log("重新设置子容器的宽度和高度");
                 var shimContainer = this.getRuntime().getContainer(),
                     button = this.options.button,
                     width = button.outerWidth ?
@@ -4893,6 +4899,8 @@
     
         return Html5Runtime.register( 'FilePicker', {
             init: function() {
+            	console.log(12);
+            	console.log("设置input和label的css属性及事件");
                 var container = this.getRuntime().getContainer(),
                     me = this,
                     owner = me.owner,
