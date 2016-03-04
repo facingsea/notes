@@ -33,8 +33,8 @@
 		<!--用来存放文件信息-->
 		<div id="thelist" class="uploader-list"></div>
 		<div class="btns">
-			<div id="picker" style="background-image: url(./img/ft_01.png); background-repeat: no-repeat;">选择文件</div>
-			<div id="mediaFileBtn">多媒体文件</div>
+			<div id="picker" class="tit_op" style="background:#1eaeeb url(./img/ft_01.png) no-repeat 9px center;">选择文件</div>
+			<div id="mediaFileBtn" class="tit_op" style="background:#1eaeeb url(./img/ft_01.png) no-repeat 9px center;">多媒体文件</div>
 			<button id="ctlBtn" class="btn btn-default">开始上传</button>
 		</div>
 	</div>
@@ -68,7 +68,9 @@
 		    //pick: '#picker',
 		    , pick: {
 		    	id: "#picker",  // 指定选择文件的按钮容器，不指定则不创建按钮
-		    	//style: "",
+		    	style: "",
+		    	// 如果实际点击按钮位置与页面上不一致，可定义button来确定按钮的width和height。参见webuploader.js中refresh()方法定义（1715及1786行左右）
+		    	button: '<div style="width: 98px; height: 30px;"></div>', 
 		    	multiple: true // 是否开起同时选择多个文件能力
 		    }
 		    , accept: {  //  {Arroy} [可选] [默认值：null] 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
@@ -99,8 +101,8 @@
 	    });
 	
 	    uploader.addButton({
-	    	//id: "#mediaFileBtn"
-	    	//, style: ''
+	    	id: "#mediaFileBtn"
+	    	, style: ''
 	    });
 	    
 	    //当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列。
@@ -161,6 +163,7 @@
 	    
 	    // 文件上传过程中创建进度条实时显示。
 	    uploader.on( 'uploadProgress', function( file, percentage ) {
+	    	console.log(percentage);
 	        var $li = $( '#'+file.id ),
 	            $percent = $li.find('.progress .progress-bar');
 
