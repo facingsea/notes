@@ -23,15 +23,10 @@ function each( obj, iterator ) {
         }
     } else {
         for ( i in obj ) {
-            //if ( hasOwn.call( obj, i ) && iterator.call( obj[ i ], i,
-            //        obj[ i ] ) === false ) {
-            //    return obj;
-            //}
-            //实际执行的是string.hasOwnProperty(i);
-            var has = hasOwn.call(obj, i);
-            var it = iterator.call(obj[i], i, obj[i]);
-            if(has && it){
-                return obj;
+            //hasOwn.call方法实际执行的是string.hasOwnProperty(i);
+            if ( hasOwn.call( obj, i ) && iterator.call( obj[ i ], i,
+                   obj[ i ] ) === false ) {
+               return obj;
             }
         }
     }
