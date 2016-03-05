@@ -5,12 +5,14 @@
 function outData(key, value){
 	console.log(key + " , " + value);
 	console.log(this);
+	return key;
 }
 
 var data = {name: "zhangsan", age: 20};
 
 for(var i in data){
-	outData.call("hello", i, data[i]); // 执行outData方法
+	var ret = outData.call("hello", i, data[i]); // 执行outData方法
+	console.log(ret);  // 返回值是outData执行后的返回值
 }
 
 
@@ -27,7 +29,8 @@ for(var i in data){
 
 var arr = ["github", "googlecode"];
 for(var i=0; i<arr.length; i++){
-	outData.apply(i, [i, arr[i]]);
+	var ret = outData.apply(i, [i, arr[i]]);
+	console.log(ret);  //  返回值是outData执行后的返回值
 } 
 
 /**
@@ -39,3 +42,5 @@ for(var i=0; i<arr.length; i++){
 
 	apply方法中第一个参数i 输出为Number的对象
  */
+
+console.log(undefined === false);
