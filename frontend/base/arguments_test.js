@@ -52,7 +52,7 @@ testArguments2(1, 2);
  */
 
 function factorial(n){
-	console.log(arguments.callee);   			// 输出 function factorial(n){....}
+	//console.log(arguments.callee);   			// 输出 function factorial(n){....}
 	if(n <= 0){
 		return 1;
 	}else{
@@ -63,3 +63,22 @@ function factorial(n){
 
 var ret = factorial(3);
 console.log(ret);	// 6
+
+
+/**
+ *	数组的slice方法返回一个原数组的子数组，对该子数组的修改并不会影响到原数组，
+ *	如果要修改原数组使用splice方法
+ * 
+ */
+
+var emptyArray = [];
+var slice = emptyArray.slice;
+function testCall(n){
+	//console.log(arguments.slice());		// Uncaught TypeError: arguments.slice is not a function
+	var ret = slice.call(arguments, 0);		// 相当于将arguments转为数组
+	console.log(arguments);
+	console.log(ret);
+}
+
+testCall(55);
+console.log(emptyArray);		// 输出 []
