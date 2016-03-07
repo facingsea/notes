@@ -195,7 +195,11 @@
 		如果不是json格式，response._raw里面可以拿到原始数据。所以，webuploader对于后端返回的数据格式是没有要求的。
 		
 		*/
-		uploader.on('uploadAccept', function(file, response){
+		/**
+		 * fn函数用来设置错误信息，并传给uploadError方法中，见webuploader.js的4043行
+		 */
+		uploader.on('uploadAccept', function(file, response, fn){
+			fn(response); // 将后台返回的错误信息转给uploadError
 			console.log('uploadAccept:');
 			console.log(file.name);
 			console.log(response);
