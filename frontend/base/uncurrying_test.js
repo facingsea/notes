@@ -39,6 +39,9 @@ Function.prototype.uncurryThis2 = function(){
 		// 如果针对的是有返回值的函数，那么这里需要return执行结果值，如果没有的话，就不需要return
 		//return f.call.apply(f, arguments); 
 		var c = f.call;
+		console.log(arguments);				// [Arguments[3], 1]
+		console.log(typeof arguments);		// object
+		console.log(arguments instanceof Array);	// false
 		var a = c.apply(f, arguments);
 		return a;
 	};
@@ -63,3 +66,15 @@ cutArgs("first", "second", "third");
 //	}
 //
 
+console.log("=====test apply===");
+(function testApply(name, address, age){
+	console.log(arguments);
+	console.log(arguments instanceof Array);		// false
+	var ret = Array.prototype.slice(arguments, 1);
+	console.log(ret);
+	console.log(typeof ret);
+}("zhangsan", "Beijing", 30))
+
+console.log("hello".this);   // undefined
+console.log(typeof []);
+console.log([] instanceof Array);  // true
