@@ -34,9 +34,13 @@ printArgs("first", "second", "third");
 // 方式二
 Function.prototype.uncurryThis2 = function(){
 	var f = this;
+	console.log(this);
 	return function(){
 		// 如果针对的是有返回值的函数，那么这里需要return执行结果值，如果没有的话，就不需要return
-		return f.call.apply(f, arguments); 
+		//return f.call.apply(f, arguments); 
+		var c = f.call;
+		var a = c.apply(f, arguments);
+		return a;
 	};
 };
 
@@ -48,5 +52,14 @@ function cutArgs(a, b, c){
 cutArgs("first", "second", "third");
 
 //
-//	Array.prototype.slice.call.apply(Array.prototype.slice, arguments);
+//	f.call.apply(f, arguments);  ==>   f.call(arguments)
+//		
+//	Array.prototype.slice.call(arguments);
 //
+//	Array.slice(args, 1){
+//		var f = Array.prototype.slice;
+//		var c = f.call;
+//		var a = c.apply(f, arguments);
+//	}
+//
+
