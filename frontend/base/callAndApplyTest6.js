@@ -5,6 +5,8 @@
  */
 
 function sum(a, b){
+	console.log("sum func..");
+	console.log(arguments);
 	return a + b;
 }
 
@@ -34,3 +36,12 @@ function calcSum3(a, b){
 }
 var ret3 = calcSum(3, 5);	// 8
 console.log(ret3);
+
+function calcSum4(a, b){
+	var aa = sum.call(arguments);
+	console.log(aa);
+	return aa;
+}
+
+var ret4 = calcSum4(8, 10);
+console.log(ret4);
