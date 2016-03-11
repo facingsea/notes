@@ -117,6 +117,65 @@ var protos = {
 	},
 
 	/**
+     * 解除事件绑定
+     * @method off
+     * @grammar off( [name[, callback[, context] ] ] ) => self
+     * @param  {String}   [name]     事件名
+     * @param  {Function} [callback] 事件处理器
+     * @param  {Object}   [context]  事件处理器的上下文。
+     * @return {self} 返回自身，方便链式
+     * @chainable
+     */
+	off: function(name, cb, ctx){
+		var events = this._events;
+		if(!events){
+			return this;
+		}
+		if(!name && !cb && !ctx){
+			this._events = [];
+			return this;
+		}
+
+		eachEvent(name, cb, function(name, cb){
+			$.each(findHandlers(events, name, cb, ctx), function(){
+				delete events[ this.id ];
+			});
+		});
+
+		return this;
+	}, 
+
+	/**
+     * 绑定事件，且当handler执行完后，自动解除绑定。
+     * @method once
+     * @grammar once( name, callback[, context] ) => self
+     * @param  {String}   name     事件名
+     * @param  {Function} callback 事件处理器
+     * @param  {Object}   [context]  事件处理器的上下文。
+     * @return {self} 返回自身，方便链式
+     * @chainable
+     */
+	once: function(name, callback, context){
+		var me = this;
+
+		if(!callback){
+			return this;
+		}
+
+		eachEvent(name, callback, function(name, callback){
+			var once = function(){
+				me.off(name, once);
+				return callback.apply(context || me , arguments);
+			};
+
+			once._cb = callback;
+			me.on(name, once, context);
+		});
+
+		return me;
+	}, 
+
+	/**
      * 触发事件
      * @method trigger
      * @grammar trigger( name[, args...] ) => self
@@ -167,5 +226,16 @@ installTo(p);
 p.on("change", function(){
 	console.log("it changed..");
 });
-p.trigger('change');
+p.trigger('change');	// it changed..
 
+p.trigger('change');	// it changed..
+
+p.off("change");
+p.trigger("change");	// 未输出，事件已被移除
+
+p.once("addAttr", function(){
+	console.log("addAttr event.");
+});
+
+p.trigger('addAttr');	// addAttr event.
+p.trigger('addAttr');	// 未输出，事件已被移除
