@@ -29,3 +29,12 @@ p2.sayName();		// zhangsan
 
 console.log(p1.sayName == p2.sayName);		// true
 console.log(p1.sayName === p2.sayName);		// true
+
+/**
+ * 我们将sayName方法和所有属性直接添加到Person的prototype属性中，构造函数变成了空函数。即便如此
+ * 也仍然可以通过构造函数来创建新对象，而且新对象还会具有相同的属性和方法。但与构造函数不同的是，
+ * 新对象的这些属性和方法是由所有实例共享的。换句话说，p1和p2访问的是同一组属性和sayName函数。
+ */
+
+
+
